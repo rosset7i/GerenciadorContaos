@@ -1,0 +1,60 @@
+<div>
+  <h1 mat-dialog-title>Editar Contato</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="form">
+      <div class="input-group my-3">
+      <span class="input-group-text">
+        <i class="bi-person-fill"></i>
+      </span>
+        <input class="form-control"
+               formControlName="primeiroNome"
+               placeholder="Primeiro Nome"
+               type="text">
+      </div>
+
+      <div class="input-group mb-3">
+      <span class="input-group-text">
+        <i class="bi-person-fill"></i>
+      </span>
+        <input class="form-control"
+               formControlName="ultimoNome"
+               placeholder="Ultimo Nome"
+               type="text">
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">
+          <i class="bi-envelope-fill"></i>
+        </span>
+        <input class="form-control"
+               formControlName="email"
+               placeholder="Email"
+               type="text">
+      </div>
+
+      <div class="input-group mb-3">
+      <span class="input-group-text">
+        <i class="bi-telephone-fill"></i>
+      </span>
+        <input
+          class="form-control"
+          formControlName="telefone"
+          mask="(00)00000-0000"
+          placeholder="Telefone"
+          type="text">
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button
+      (click)="saveContato()"
+      [disabled]="!canSave"
+      class="btn btn-dark m-1">
+      Salvar
+    </button>
+    <button class="btn btn-danger m-1" mat-dialog-close>
+      Cancelar
+    </button>
+  </div>
+</div>

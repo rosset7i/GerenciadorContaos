@@ -1,0 +1,13 @@
+<nav>
+  <ul class="pagination">
+    <li class="page-item">
+      <button (click)="previousPage()" [disabled]="currentPage === 0" class="page-link"><<</button>
+    </li>
+    <li class="page-item">
+      <a class="page-link">{{ currentPage + 1 }} / {{ totalPages }}</a>
+    </li>
+    <li class="page-item">
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1" class="page-link">>></button>
+    </li>
+  </ul>
+</nav>

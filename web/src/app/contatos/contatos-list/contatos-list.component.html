@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-1">
+    <button (click)="abrirModalContato()" class="btn btn-success" type="button">
+      <i class="bi bi-plus"></i>
+    </button>
+  </div>
+</div>
+
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Nome
+      <button (click)="onSortingChange('primeiroNome')" class="button">
+        <i class="bi bi-arrow-down-up"></i>
+      </button>
+    </th>
+    <th scope="col">Telefone
+      <button (click)="onSortingChange('telefone')" class="button">
+        <i class="bi bi-arrow-down-up"></i>
+      </button>
+    </th>
+    <th scope="col">Email
+      <button (click)="onSortingChange('email')" class="button">
+        <i class="bi bi-arrow-down-up"></i>
+      </button>
+    </th>
+    <th scope="col">Data de Criação
+      <button (click)="onSortingChange('dataDeCriacao')" class="button">
+        <i class="bi bi-arrow-down-up"></i>
+      </button>
+    </th>
+    <th scope="col">Ultima Modificação
+      <button (click)="onSortingChange('dataDeModificacao')" class="button">
+        <i class="bi bi-arrow-down-up"></i>
+      </button>
+    </th>
+    <th scope="col">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let contato of contatoList">
+    <td>{{contato.primeiroNome + ' ' + contato.ultimoNome}}</td>
+    <td>{{contato.telefone | mask: '(00)00000-0000' }}</td>
+    <td>{{contato.email}}</td>
+    <td>{{contato.dataDeCriacao | date: 'short'}}</td>
+    <td>{{contato.dataDeModificacao | date: 'short'}}</td>
+    <td>
+      <button (click)="abrirModalContato(contato)" class="btn btn-primary m-1" type="button">
+        <i class="bi bi-pencil"></i>
+      </button>
+      <button (click)="removeContato(contato.id)" class="btn btn-danger m-1" type="button">
+        <i class="bi bi-trash3"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<app-paginator
+  (pageChanged)="onPageChanged($event)"
+  [currentPage]="currentPage"
+  [totalPages]="totalPages">
+</app-paginator>
+
